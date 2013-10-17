@@ -10,6 +10,7 @@ h6.site-slogan  {font-style:italic; font-size:18px; color:#0078c1;}
 h5, h6 {margin-bottom:0;}
 h2 {font-size:18px; margin:0 0 5px 0;}
 .front h2 {color:#fff;}
+.front #zone-postscript-wrapper h2, #zone-postscript-wrapper h2 {color:#0078c1; margin:5px 0;}
 p {font-size:13px; margin:0 0 10px 0;}
 
 ul {list-style-position: outside;}
@@ -28,7 +29,7 @@ h6.site-slogan {font-size:14px;}
 
 .front #section-content .block {color:#FFF; padding:5px;}
 #zone-postscript {border-top:1px #ccc solid; margin-top:10px;}
-.front #section-content .block .view-tweets tr.odd td, .front #section-content .block .view-tweets tr.even td, #section-content .block .view-tweets tr.odd td, #section-content .block .view-tweets tr.even td {color: black; border:none;}
+.front #section-content .block .view-tweets tr.odd td, .front #section-content .block .view-tweets tr.even td, #section-content .block .view-tweets tr.odd td, #section-content .block .view-tweets tr.even td {color: black; border:none; padding:0 5px;}
 #section-content .block .view-tweets tr.odd, #section-content .block .view-tweets tr.even {border-bottom:none;}
 #section-content .block .view-tweets table {border:none;}
 td.views-field-web-intents {width:60px;}
