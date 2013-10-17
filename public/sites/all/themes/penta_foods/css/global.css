@@ -27,6 +27,11 @@ h6.site-slogan {font-size:14px;}
 #zone-menu-wrapper {display:none;}
 
 .front #section-content .block {color:#FFF; padding:5px;}
+#zone-postscript {border-top:1px #ccc solid; margin-top:10px;}
+.front #section-content .block .view-tweets tr.odd td, .front #section-content .block .view-tweets tr.even td, #section-content .block .view-tweets tr.odd td, #section-content .block .view-tweets tr.even td {color: black; border:none;}
+#section-content .block .view-tweets tr.odd, #section-content .block .view-tweets tr.even {border-bottom:none;}
+#section-content .block .view-tweets table {border:none;}
+td.views-field-web-intents {width:60px;}
 /*.front #region-content .block a:link, .front #region-content .block a:visited {color:#FFF; text-decoration:none;}
 
 .front #region-content .block a:hover {color:#FFF; text-decoration:underline;}*/
