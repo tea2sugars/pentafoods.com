@@ -1,0 +1,40 @@
+/* This file will hold styles that are loaded using the same media query as the narrow grid. */
+/* If you are using the default media queries provided by Omega, these styles will also
+ *  apply to the normal and widescreen layouts. You may override these styles in the normal 
+ *  and widescreen CSS files as appropriate. */
+#region-contact-right {padding-top:10px;}
+#zone-branding		{padding-bottom:0;}
+
+p {font-size:12px;}
+h1.site-name {font-size:18px; font-weight:300;}
+h1.site-name a:link, h1.site-name a:visited {color:#000;}
+h1.site-name a:hover {color:#0078c1;}
+h2, h2.block-title {margin:0; font-size:14px;}
+
+h6.site-slogan  {font-style:italic; font-size:14px; color:#0078c1;}
+
+.site-name-slogan {float:left; width:200px; text-align:left; margin:0 0 0 10px;}
+
+#block-block-1, #block-block-2, #block-block-4, #block-views-brands-block-2, #block-block-8, #block-block-9 {width:274px; border:2px solid #fff; height:160px; }
+#block-block-3, #block-block-5 {width:130px; border:2px solid #fff; height:140px; }
+#block-block-6 {width:274px; border:2px solid #fff; height:140px;}
+
+#block-block-5 {background:url(../images/home_top_sml.png) top left no-repeat; }
+#block-block-6 {background:url(../images/home_mid_sml.png) top left no-repeat;}
+#block-block-9 {background:url(../images/home_btm_big.png) top left no-repeat;}
+#block-block-14 {height:185px; display:inherit; height:110px;}
+
+#contact-right, #contact-left {float:right; width:200px; margin:0;}
+
+#contact-left p {font-size:12px; text-align:left;}
+p#contact-email, p#contact-phone, #contact-left p {font-size:12px; margin:0;}
+
+#block-block-1 p, #block-block-2 p, #block-block-3 p, #block-block-4 p {font-size:11px;}
+#block-block-8 p {font-size:10px;}
+
+ul.nice-menu li {border:0; margin-right:1px; font-size:12px;}
+ul.nice-menu li.first {margin-left:0;}
+
+ul.nice-menu a:link, ul.nice-menu a:visited, ul.nice-menu .menuparent a:link, ul.nice-menu .menuparent a:visited, ul.nice-menu-down li.menu-path-nolink {padding:12px 10px;}
+
+
