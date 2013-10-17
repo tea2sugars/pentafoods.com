@@ -4,6 +4,11 @@ Drupal.behaviors.popup = {
 
   attach: function(context){
 
+    // Make sure we have an overlay space
+    if(!$('#popup-active-overlay').length){
+      $('body').append('<div id="popup-active-overlay"></div>');
+    }
+
     // Process flat menu containers
     $('.popup-menu-flat:not(.popup-menu-flat-processed)').each(
       function(){

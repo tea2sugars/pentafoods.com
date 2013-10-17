@@ -121,19 +121,6 @@ function popup_popup_effects(){
 
 
 /**
- * Implementation of hook_page_alter
- *
- * Inserts the popup overlay to embed popup bodies in.
- */
-function popup_page_alter(&$page) {
-  $page['page_bottom']['popup_overlay'] = array(
-    '#markup' => '<div id="popup-active-overlay"></div>',
-  );
-}
-
-
-
-/**
  * Implementation of hook_menu
  */
 function popup_menu(){

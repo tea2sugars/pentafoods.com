@@ -46,7 +46,8 @@ function popupformat_features_export($data, &$export, $module_name = '') {
 
     if ($formats[$instance]['effect']){
       foreach(module_implements('popup_effects') as $module){
-        $module_effects = array_shift(module_invoke($module, 'popup_effects'));
+        $provided = module_invoke($module, 'popup_effects');
+        $module_effects = array_shift($provided);
         if (isset($module_effects[$formats[$instance]['effect']])){
           $export['dependencies'][$module] = $module;
           break;

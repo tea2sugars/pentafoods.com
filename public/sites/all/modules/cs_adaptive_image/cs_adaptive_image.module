@@ -63,19 +63,20 @@ function cs_adaptive_image_field_formatter_settings_form($field, $instance, $vie
     'content' => t('Content'),
     'file' => t('File'),
   );
-  $form['image_link'] = array(
+  $element = array();
+  $element['image_link'] = array(
     '#title' => t('Link image to'),
     '#type' => 'select',
     '#default_value' => $settings['image_link'],
     '#empty_option' => t('Nothing'),
     '#options' => $link_types,
   );
-  $form['styles'] = array(
+  $element['styles'] = array(
     '#tree' => TRUE,
     '#theme' => 'cs_adaptive_image_styles_form',
   );
   for ($i = 1; $i <= variable_get('cs_adaptive_image_breakpoint_count', 5); $i++) {
-    $form['styles']['breakpoint_' . $i] = array(
+    $element['styles']['breakpoint_' . $i] = array(
       '#title' => t('Client width breakpoint @key', array('@key' => $i)),
       '#title_display' => 'invisible',
       '#type' => 'textfield',
@@ -85,7 +86,7 @@ function cs_adaptive_image_field_formatter_settings_form($field, $instance, $vie
       '#field_suffix' => 'px',
       '#element_validate' => array('element_validate_integer_positive'),
     );
-    $form['styles']['style_' . $i] = array(
+    $element['styles']['style_' . $i] = array(
       '#title' => t('Image style for breakpoint @key', array('@key' => $i)),
       '#title_display' => 'invisible',
       '#type' => 'select',
@@ -94,7 +95,7 @@ function cs_adaptive_image_field_formatter_settings_form($field, $instance, $vie
       '#options' => $image_styles,
     );
   }
-  $form['styles']['max_style'] = array(
+  $element['styles']['max_style'] = array(
     '#title' => t('Maximum'),
     '#title_display' => 'invisible',
     '#description' => t('Image style to use when the client width exceeds the widest value specified above.'),
@@ -103,7 +104,7 @@ function cs_adaptive_image_field_formatter_settings_form($field, $instance, $vie
     '#empty_option' => t('None (original image)'),
     '#options' => $image_styles,
   );
-  $form['styles']['fallback_style'] = array(
+  $element['styles']['fallback_style'] = array(
     '#title' => t('Fallback'),
     '#title_display' => 'invisible',
     '#description' => t('Image style to use when the client does not support JavaScript.'),
@@ -113,7 +114,7 @@ function cs_adaptive_image_field_formatter_settings_form($field, $instance, $vie
     '#options' => $image_styles,
   );
 
-  return $form;
+  return $element;
 }
 
 /**

@@ -138,20 +138,22 @@ function popup($attributes){
   drupal_alter('popup_attributes', $attributes);
   $attributes['altered'] = TRUE;
 
+  $types = array_intersect(
+    array('text', 'node', 'block', 'form', 'php', 'menu', 'view'),
+    array_keys($attributes)
+  );
   $type = array_shift(
-    array_intersect(
-      array('text', 'node', 'block', 'form', 'php', 'menu', 'view'),
-      array_keys($attributes)
-    )
+    $types
   );
 
   $function = '_popup_' . $type;
 
+  $ajax_types = array_intersect(
+    array('text', 'node', 'block', 'form', 'view', 'php'),
+    array_keys($attributes)
+  );
   $ajax_type = array_shift(
-    array_intersect(
-      array('text', 'node', 'block', 'form', 'view', 'php'),
-      array_keys($attributes)
-    )
+    $ajax_types
   );
 
   // If AJAX is to be used to populate the body, don't generate it now
@@ -206,21 +208,18 @@ function popup_element($title, $body, $attributes = array()){
     ? '<a class="popup-close popup-close-button"><span>[X]</span></a>'
     : '';
   $href = $attributes['path'] ? 'href="' . $attributes['path'] . '"' : '';
-  $ajax_type = array_shift(
-    array_intersect(
-      array('text', 'node', 'block', 'form', 'view', 'php'),
-      array_keys($attributes)
-    )
+  $ajax_types = array_intersect(
+    array('text', 'node', 'block', 'form', 'view', 'php'),
+    array_keys($attributes)
   );
-
-  $title = $attributes['image']
-    ? '<img src="/' . $attributes['image'] . '" alt="' . $title . '" />'
-    : $title;
+  $ajax_type = array_shift(
+    $ajax_types
+  );
 
   $popup_title = theme(
     'popup-element-title' . $style_suffix,
     array(
-      'title' => $title,
+      'title' => _popup_title($title, $attributes['image']),
       'class' => $classes['title'],
       'href' => $href,
     )
@@ -485,7 +484,9 @@ function _popup_menu($attributes){
       )
     : FALSE;
   $menu['link']['has_children'] = isset($children);
-  $menu['link']['title'] = strlen($attributes['title']) ? $attributes['title'] : $menu['title'];
+  $menu['link']['title'] = isset($attributes['title']) && strlen($attributes['title'])
+    ? $attributes['title']
+    : $menu['title'];
 
   return _popup_menuelement($menu, $attributes);
 

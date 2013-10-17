@@ -8,18 +8,13 @@ Index
     - Hooks
 3. Caveats
 4. Credits
-5. Known issues
 
 
 
 1. Requirements
 ---------------
 
-a) To use the panel node display for Panels 6.x-3.7 and earlier the following
-   patch is required:
-   http://drupal.org/node/888218
-
-b) This is a JavaScript intensive feature. It is the responsibility of the
+a) This is a JavaScript intensive feature. It is the responsibility of the
    site admin to ensure that all popups have link attributes. Without these the
    script degradation is meaningless.
 
@@ -66,7 +61,7 @@ b) This is a JavaScript intensive feature. It is the responsibility of the
                   module - the name of the module that provides the block.
                   delta  - the delta of the module block.
 
-      menu   - Machine name of the menu to be popped up. Note that the menu 
+      menu   - Machine name of the menu to be popped up. Note that the menu
                module prefixes some menu ids with "menu-". Additional attributes
                for menus are:
 
@@ -86,10 +81,14 @@ b) This is a JavaScript intensive feature. It is the responsibility of the
       php    - A string of php that returns rendered text to be displayed within
                the popup body.
 
-      image  - A path relative to the drupal root to an image to be used as the
-               popup title.
+      image  - A path relative an image to be used as the popup title. It may be
+               relative to:
+                  a) Drupal root
+                  b) Files folder (public:// and I think private:// may work too )
+                  c) Theme folder
+               Preference in that order.
 
-      title  - The title that should be used for the popup. This will override 
+      title  - The title that should be used for the popup. This will override
                any of the automatically generated titles provided by each of the
                above popup types. If an image is provided, this will be used as
                the alt attribute.
@@ -103,7 +102,7 @@ b) This is a JavaScript intensive feature. It is the responsibility of the
       Display related attributes:
       ---------------------------
 
-      id     - The CSS id, prefixed with "popup-element-id-", that will be 
+      id     - The CSS id, prefixed with "popup-element-id-", that will be
                assigned to the wrapper of the entire popup element. Note that
                the body will be wrapped within an element with "-active"
                appended to the id, and class "popup-element-wrapper", before
@@ -114,7 +113,7 @@ b) This is a JavaScript intensive feature. It is the responsibility of the
                the wrapper of the entire popup element, as well as the wrapper
                of the body. See above.
 
-      origin - The corner of the title that the popup will originate at. 
+      origin - The corner of the title that the popup will originate at.
                Accepted values:
 
                   top-left, top-right, bottom-left and bottom-right
@@ -124,7 +123,7 @@ b) This is a JavaScript intensive feature. It is the responsibility of the
 
                   top-left, top-right, bottom-left and bottom-right
 
-      effect - The name of the showing/hiding animation effect to use. Modules 
+      effect - The name of the showing/hiding animation effect to use. Modules
                may provide their own effects by implementing hook_popup_effects.
                The popup suite provides these effects:
 
@@ -147,7 +146,7 @@ b) This is a JavaScript intensive feature. It is the responsibility of the
 
                       click - users must click on the popup title to reveal the
                               body.
-                      hover - (Default) users activate popups by hovering over 
+                      hover - (Default) users activate popups by hovering over
                               the popup title.
 
       ajax         - Causes the body of the popup to be retrieved with an AJAX
@@ -297,23 +296,9 @@ a) IE6 is no longer supported from version 6x-3.2. Popups will work, however
   Popup description label position concept
   By Jan-Jan van der Vyver
 
-  Node panel rendering
-  By Anton De Wet
-
-  Popup Breadcrumb concept
-  Original Idea by Tamian Revoluchin
-
   Node reference field integration
   Original Idea by Greg McKeen
 
   The flying spagetty monster.
   For touching us with his noodly appendage.
 
-
-5. Known issues
----------------
-
-  popup_block
-  -----------
-
-  1) Help text does not work

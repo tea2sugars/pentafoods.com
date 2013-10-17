@@ -55,7 +55,7 @@ function popup_block_form_alter(&$form, $form_state, $form_id){
         ),
 
         'popup-block-format' => array(
-          '#default_value' => $block_settings['format'],
+          '#default_value' => isset($block_settings['format']) ? $block_settings['format'] : '',
           '#title' => 'Display format',
           '#type' => 'select',
           '#options' => $display_format_options,
@@ -123,17 +123,18 @@ function popup_block_preprocess_block(&$variables){
 
     $body = $variables['content'];
 
-    $title = array_shift(
-      array_filter(
-        array(
-          $variables['elements']['#block']->subject,
-          $variables['elements']['#block']->title,
-          substr(strip_tags($body), 0, $title_length) . '...',
-          isset($variables['elements'][1]['title'])
-            ? $variables['elements'][1]['title']
-            : 0,
-        )
+    $title_candidates = array_filter(
+      array(
+        $variables['elements']['#block']->subject,
+        $variables['elements']['#block']->title,
+        substr(strip_tags($body), 0, $title_length) . '...',
+        isset($variables['elements'][1]['title'])
+          ? $variables['elements'][1]['title']
+          : 0,
       )
+    );
+    $title = array_shift(
+      $title_candidates
     );
 
     $attributes = array(

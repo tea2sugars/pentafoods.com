@@ -55,7 +55,6 @@ function popup_filter_filter_info() {
     'title' => t('Popup filter'),
     'description' => t('Replaces [popup filter tags] with popup content. Administrator use only!'),
     'process callback' => 'popup_filter_eval',
-//    'tips callback' => '_php_filter_tips',
     'cache' => FALSE,
   );
   return $filters;
@@ -109,17 +108,15 @@ function popup_filter_form_alter(&$form, &$form_state, $form_id){
 
     if ($block_form){
       if (isset($form['settings']['body_field'])){
-        $form['settings']['popup_form'] = array(
-          '#markup' => $popup_form,
-          '#weight' => $form['settings']['body_field']['#weight'] - 1,
-        );
+        $form['settings']['body_field']['#prefix'] = isset($form['settings']['body_field']['#prefix'])
+          ? $form['settings']['body_field']['#prefix'] . $popup_form
+          : $popup_form;
       }
     } else {
       if (isset($form['body'])){
-        $form['popup_form'] = array(
-          '#markup' => $popup_form,
-          '#weight' => $form['body']['#weight'] - 1,
-        );
+        $form['body']['#prefix'] = isset($form['body']['#prefix'])
+          ? $form['body']['#prefix'] . $popup_form
+          : $popup_form;
       }
     }
   }

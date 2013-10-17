@@ -71,10 +71,16 @@ function theme_popup_ahah_placeholder($variables){
     ? '/' . $variables['attributes']['ajax_extra']
     : '';
 
+  $url = (
+    variable_get('clean_url')
+      ? '/ahah/popup/'
+      : '?q=/ahah/popup/'
+    ) . $type . '/' . $hash . $extra;
+
   return
     '<div class="popup-ahah-placeholder">' .
       t('Loading') .
-      '<a class="ahah-path" href="/ahah/popup/' . $type . '/' . $hash . $extra . '"></a>' .
+      '<a class="ahah-path" href="' . $url . '"></a>' .
     '</div><noscript><p class="error">' . t('Please enable Javascript to be able to view this content.') . '</p></noscript>';
 }
 

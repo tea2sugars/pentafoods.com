@@ -2,6 +2,41 @@
 
 
 
+/* ---- Element helpers ---- */
+
+
+
+function _popup_title($title, $path){
+
+  if ($path){
+
+    global $base_url;
+    global $base_path;
+    global $theme;
+
+    $theme_path = drupal_get_path('theme', $theme) . '/' . $path;
+    $files_path = file_default_scheme() . '://' . $path;
+
+    $candidates = array_keys(
+      array_filter(
+        array(
+          $path => file_exists(realpath($path)), // Relative to drupal install
+          file_create_url($files_path) => file_exists(drupal_realpath($files_path)), // Relative to the files folder
+          $theme_path => file_exists(realpath($theme_path)), // Relative to theme
+        )
+      )
+    );
+
+    $url = array_shift($candidates);
+
+    return '<img src="' . $url . '" alt="' . $title . '" />';
+
+  } else return $title;
+
+}
+
+
+
 /* ---- Hook helpers ---- */
 
 
@@ -408,23 +443,20 @@ function popup_get_ahah($type, $attr_hash = ''){
 
 function popup_cache_attributes($cache){
 
-  $attrib_cache = FALSE;
-  if (!$attrib_cache){
-    $attrib_cache = variable_get('popup_ajax_cache', array());
-  }
-
   if (is_array($cache)){
 
     $hash = md5(serialize($cache));
-    $attrib_cache[$hash] = $cache;
-
-    variable_set('popup_ajax_cache', $attrib_cache);
+    cache_set($hash, $cache, 'cache', time() + 360000);
 
     return $hash;
 
   } else {
-    return $attrib_cache[$cache];
+
+    $cached = cache_get($cache);
+
+    return $cached ? $cached->data : FALSE;
   }
+
 }
 
 

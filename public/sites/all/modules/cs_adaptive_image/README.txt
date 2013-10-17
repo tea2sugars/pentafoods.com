@@ -117,6 +117,7 @@ similar functionality using different techniques and/or architectures:
 
 * http://drupal.org/project/adaptive_image
 * http://drupal.org/project/ais
+* http://drupal.org/project/resp_img
 * http://drupal.org/project/responsive_images
 
   

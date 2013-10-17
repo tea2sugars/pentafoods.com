@@ -30,19 +30,21 @@
       };
 
       // Insert adapted images.
-      $('noscript.adaptive-image').addClass('adaptive-image-processed').each(function(index) {
+      $('noscript.adaptive-image', context).once('adaptive-image', function() {
         var img = getAdaptedImage(this);
         $(this).after(img);
+        Drupal.attachBehaviors(img);
       });
 
       // Replace adapted images on window resize.
       $(window).resize(function() {
-        $('noscript.adaptive-image-processed').each(function(index) {
+        $('noscript.adaptive-image-processed').each(function() {
           // Replace image if it does not match the same breakpoint.
           var excluded_breakpoint = $(this).next('img.adaptive-image').attr('data-adaptive-image-breakpoint');
           var img = getAdaptedImage(this, excluded_breakpoint);
           if (img) {
             $(this).next('img.adaptive-image').replaceWith(img);
+            Drupal.attachBehaviors(img);
           }
         });
       });

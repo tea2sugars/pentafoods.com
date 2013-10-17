@@ -190,7 +190,7 @@ function _popup_filter_text(){
     'display' => t('Display'),
     'arguments' => t('Arguments'),
     'argument description' => t('Comma seperated list of arguments to pass to the view, eg.<br />1, 3'),
-    'views disabled' => t('To embed views, the views module must be enabled on the !link.', array('link' => l(t('Modules administration page'), 'admin/build/modules'))),
+    'views disabled' => t('To embed views, the views module must be enabled on the') . ' ' . l(t('Modules administration page'), 'admin/build/modules'),
     'filter reminder' => t('Please ensure that the input format below is set to "Popup tags", or that the selected input format includes a popup tags filter.'),
     'insert' => t('Insert'),
   );

@@ -8,9 +8,9 @@ div.popup-filter-form-wrapper{ padding: 10px 0 0; text-align: left;}
 div.popup-filter-form-wrapper:after{ clear: both; content: '.'; display: block; height: 0; line-height: 0; visibility: hidden;}
 
 div.class-popup-filter-admin-form div.popup-content,
-div.class-popup-filter-admin-form div.popup-attributes{ position: relative; width: 285px;}
+div.class-popup-filter-admin-form div.popup-attributes{ width: 285px;}
 div.class-popup-filter-admin-form div.popup-attributes{ float: left;}
-div.class-popup-filter-admin-form div.popup-content{ float: right; height: 430px;}
+div.class-popup-filter-admin-form div.popup-content{ float: right;}
 
 div.class-popup-filter-admin-form div.form-item-first{ margin-top: 0;}
 div.class-popup-filter-admin-form div.form-item:after{ clear: both; content: '.'; display: block; height: 0; line-height: 0; visibility: hidden;}

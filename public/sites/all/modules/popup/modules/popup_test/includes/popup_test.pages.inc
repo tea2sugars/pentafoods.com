@@ -131,11 +131,9 @@ function popup_test_content(){
 
     $firstnode > 0
       ? 'Node: Some text ' . popup(array('node' => $firstnode, 'activate' => 'click', 'width' => 450)) . ' and some more text.'
-      : '[No nodes have been loaded, skipping node test]<br />',
+      : '[No nodes have been loaded, skipping node test]',
 
     'Module block: Some text ' . popup(array('block' => TRUE, 'module' => 'user', 'delta' => 'online', 'activate' => 'click')) . ' and some more text.',
-
-    'Custom block: Some text ' . popup(array('block' => 1, 'activate' => 'click')) . ' and some more text.',
 
     module_exists('search')
       ? 'Form: Some text ' . popup(array('form' => 'search_form', 'activate' => 'click', 'width' => 350)) . ' and some more text.'
@@ -169,11 +167,9 @@ function popup_test_ajax(){
 
     $firstnode > 0
       ? 'Node: Some text ' . popup(array('node' => $firstnode, 'activate' => 'click', 'ajax' => 1, 'width' => 450)) . ' and some more text.'
-      : '[No nodes have been loaded, skipping node test]<br />',
+      : '[No nodes have been loaded, skipping node test]',
 
     'Module block: Some text ' . popup(array('block' => TRUE, 'module' => 'user', 'delta' => 'online', 'activate' => 'click', 'ajax' => 1)) . ' and some more text.',
-
-    'Custom block: Some text ' . popup(array('block' => 1, 'activate' => 'click', 'ajax' => 1)) . ' and some more text.',
 
     module_exists('search')
       ? 'Form: Some text ' . popup(array('form' => 'search_form', 'activate' => 'click', 'ajax' => 1, 'width' => 350)) . ' and some more text.'
